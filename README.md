@@ -1,12 +1,7 @@
-# cor: Community Ontology Repository 
+# cor: Community Ontology Repository for ESIP
 
-*A prototype/testing installation for the ESIP community.
+This repository is the project management repository for the Community Ontology Repository, a prototype/testing installation being deployed by MMI for the ESIP community.
 
-## What is the COR?
-
-## Related sites
-
-
-## This Site and its Workflow
+The detailed information about the COR project is provided at the [COR wiki](https://github.com/ESIPFed/cor/wiki). Please refer to that site for additional information on this repository.
 
 
