@@ -435,3 +435,80 @@ Following https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recognize-expanded
     /dev/xvda1       20G  6.7G   13G  35% /
 
 So, now we have 13G available.
+
+
+## Data transfer
+
+On previous/current machine:
+
+- noted no user activity by looking at google analytics real-time
+  panel and also a the ORR log.
+
+- stopped the whole ORR system, in particular including Mongo
+
+        $ docker-compose down
+
+- created data tarball:
+
+        $ sudo tar cf COR_data_2018-04-20.tgz orr_data mongo_data
+
+- re-started ORR system
+
+        $ docker-compose up -d
+
+- transferred tarball to new machine:
+
+        $ scp -i ESIPCOR.pem orr-cor/COR_data_2018-04-20.tgz cor-admin1@ec2-34-216-150-176.us-west-2.compute.amazonaws.com:
+
+On new machine:
+
+- stopped ORR system:
+
+        [cor-admin1@ip-172-30-0-37 ~]$ cd COR
+        [cor-admin1@ip-172-30-0-37 COR]$ source setenv.sh
+        [cor-admin1@ip-172-30-0-37 COR]$ docker-compose down
+
+- extracted data tarball:
+
+        [cor-admin1@ip-172-30-0-37 COR]$ sudo tar xf ../COR_data_2018-04-20.tgz
+
+- edited `config/orront.conf` to temporarily use
+  `http://34.216.150.176/` as base location for the relevant links
+
+- re-started ORR system
+
+        $ docker-compose up -d
+
+- from previous machine, also transferred the following:
+    - `/etc/httpd/conf.d/orr.conf`
+    - `/etc/httpd/conf.d/sweetontology.conf`
+    - `/var/www/html/*`
+
+- re-started apache:
+
+        sudo service httpd graceful
+
+- opened in my browser:
+    - http://34.216.150.176/
+    - http://34.216.150.176/ont/
+  All OK as expected.
+
+
+Check space:
+
+    [cor-admin1@ip-172-30-0-37 COR]$ df -h
+    Filesystem      Size  Used Avail Use% Mounted on
+    devtmpfs        2.0G   56K  2.0G   1% /dev
+    tmpfs           2.0G     0  2.0G   0% /dev/shm
+    /dev/xvda1       20G  9.3G   11G  48% /
+
+So, 11G still available after whole data transfer.
+
+# NEXT: Actual final data transfer and cut-over
+
+- determine date for cutover
+- put note on current instance announcing downtime
+- when the time comes, do the data transfer sequence above
+- adjust `config/orront.conf` to revert the temporary changes
+- launch system: `docker-compose up -d`
+- Done!
