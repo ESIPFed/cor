@@ -512,3 +512,26 @@ So, 11G still available after whole data transfer.
 - adjust `config/orront.conf` to revert the temporary changes
 - launch system: `docker-compose up -d`
 - Done!
+
+
+# 2018-04-24
+
+Put notice on both http://cor.esipfed.org/  and  http://cor.esipfed.org/ont :
+
+> Please note: The ESIP COR site will soon be transitioning to a new server with final cutover planned for next Friday, April 27, 2018.
+> Please consider the site in read-only mode until this process is completed. (This notice will not be displayed as an indication of such completion.)
+> We apologize for any inconvenience.
+
+The above done as follows:
+
+For http://cor.esipfed.org/ :
+
+    vim /var/www/html/index.html # to insert snippet right after `<body>`
+
+For http://cor.esipfed.org/ont/ :
+
+    ssh -i ~/.ssh/cor_carueda_rsa carueda@54.183.173.69
+    cd /tmp
+    docker cp orr:/usr/local/tomcat/webapps/ont/index.html .
+    vim index.html  # to insert the snippet
+    docker cp index.html orr:/usr/local/tomcat/webapps/ont/
