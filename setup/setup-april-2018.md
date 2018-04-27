@@ -535,3 +535,75 @@ For http://cor.esipfed.org/ont/ :
     docker cp orr:/usr/local/tomcat/webapps/ont/index.html .
     vim index.html  # to insert the snippet
     docker cp index.html orr:/usr/local/tomcat/webapps/ont/
+
+# 2018-04-27
+
+## Final data transfer
+
+On previous/current machine:
+
+- stopped the whole ORR system
+
+        cd orr-cor/
+        docker-compose down
+
+- created data tarball:
+
+        sudo tar cf COR_data_2018-04-27.tgz orr_data mongo_data
+
+- re-started ORR system, and restored index.html with cutoever notice:
+
+        docker-compose up -d
+        docker cp index.html orr:/usr/local/tomcat/webapps/ont/
+
+- transferred tarball to new machine:
+
+        scp -i ../ESIPCOR.pem COR_data_2018-04-27.tgz cor-admin1@ec2-34-216-150-176.us-west-2.compute.amazonaws.com:
+
+On new machine:
+
+- stopped ORR system:
+
+        [cor-admin1@ip-172-30-0-37 ~]$ cd COR
+        [cor-admin1@ip-172-30-0-37 COR]$ source setenv.sh
+        [cor-admin1@ip-172-30-0-37 COR]$ docker-compose down
+
+- extracted data tarball:
+
+        [cor-admin1@ip-172-30-0-37 COR]$ sudo tar xf ../COR_data_2018-04-20.tgz
+
+- edited `config/orront.conf` to REVERT the temporary use of
+  `http://34.216.150.176/` as base location for the relevant links,
+  so now using the actual base `http://cor.esipfed.org/`:
+
+        [cor-admin1@ip-172-30-0-37 COR]$ vim config/orront.conf
+
+- re-started ORR system
+
+        [cor-admin1@ip-172-30-0-37 COR]$ docker-compose up -d
+        Creating network "cor_default" with the default driver
+        Creating mongo  ... done
+        Creating agraph ... done
+        Creating orr    ... done
+
+- opened in my browser to check basic dispatch OK:
+    - http://34.216.150.176/
+    - http://34.216.150.176/ont/
+
+- Re-populated triple store:
+
+    From my local machine, and using [HTTPie](https://httpie.org/):
+
+        http -pb -a carueda:MYPWHERE put http://34.216.150.176/ont/api/v0/ts/
+        {
+            "msg": "Done, 254 ontologies reloaded"
+        }
+
+    (see [triple store reload operation](http://cor.esipfed.org/ontapi/#!/triplestore/reloadOntsInTriplestore).)
+
+    **NOTE**: Not using the Admin option in the GUI itself because the
+    configuration entry for the API endpoint is now back to
+    `http://cor.esipfed.org` BUT the IP cutover is not yet in place at
+    this right moment.
+
+- Sent email to Annie to proceed with IP cutover.
