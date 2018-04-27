@@ -570,7 +570,7 @@ On new machine:
 
 - extracted data tarball:
 
-        [cor-admin1@ip-172-30-0-37 COR]$ sudo tar xf ../COR_data_2018-04-20.tgz
+        [cor-admin1@ip-172-30-0-37 COR]$ sudo tar xf ../COR_data_2018-04-27.tgz
 
 - edited `config/orront.conf` to REVERT the temporary use of
   `http://34.216.150.176/` as base location for the relevant links,
