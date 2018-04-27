@@ -606,4 +606,15 @@ On new machine:
     `http://cor.esipfed.org` BUT the IP cutover is not yet in place at
     this right moment.
 
+- Check space:
+
+        [cor-admin1@ip-172-30-0-37 COR]$ df -h
+        Filesystem      Size  Used Avail Use% Mounted on
+        devtmpfs        2.0G   56K  2.0G   1% /dev
+        tmpfs           2.0G     0  2.0G   0% /dev/shm
+        /dev/xvda1       20G   12G  8.3G  58% /
+
+    So, with the triple store also populated, we actually now have
+    8.3G space available.
+
 - Sent email to Annie to proceed with IP cutover.
