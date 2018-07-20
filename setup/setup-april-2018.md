@@ -637,6 +637,22 @@ Java8:
     [cor-admin1@ip-172-30-0-37 watchdog]$ sudo yum install java-1.8.0-openjdk
     ...
 
+    [cor-admin1@ip-172-30-0-37 watchdog]$ sudo alternatives --config java
+
+    There are 2 programs which provide 'java'.
+
+      Selection    Command
+    -----------------------------------------------
+    *+ 1           /usr/lib/jvm/jre-1.7.0-openjdk.x86_64/bin/java
+       2           /usr/lib/jvm/jre-1.8.0-openjdk.x86_64/bin/java
+
+    Enter to keep the current selection[+], or type selection number: 2
+    
+    [cor-admin1@ip-172-30-0-37 watchdog]$ java -version
+    openjdk version "1.8.0_171"
+    OpenJDK Runtime Environment (build 1.8.0_171-b10)
+    OpenJDK 64-Bit Server VM (build 25.171-b10, mixed mode)
+
     [cor-admin1@ip-172-30-0-37 watchdog]$ sudo sh -c '(echo "#!/usr/bin/env sh" && curl -L https://github.com/lihaoyi/Ammonite/releases/download/1.1.2/2.12-1.1.2) > /usr/local/bin/amm && chmod +x /usr/local/bin/amm'
     ...
 
