@@ -1,0 +1,349 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:owlodm="http://owlodm.ontoware.org/OWL1.1#"
+    xmlns:changes="http://omv.ontoware.org/2009/09/changes#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns="http://omv.ontoware.org/2009/09/OWLChanges#"
+  xml:base="http://omv.ontoware.org/2009/09/OWLChanges">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://omv.ontoware.org/2009/09/changes"/>
+    <owl:imports rdf:resource="http://owlodm.ontoware.org/OWL1.1"/>
+  </owl:Ontology>
+  <owl:Class rdf:ID="ObjectPropertyChange">
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2009/09/changes#EntityChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="FunctionalObjectPropertyChange">
+    <rdfs:subClassOf rdf:resource="#ObjectPropertyChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveInverseObjectProperty">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="InverseObjectPropertyChange"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="AddSymmetricObjectProperty">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="SymmetricObjectPropertyChange"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="AddObjectPropertyRange">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ObjectPropertyRangeChange"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2009/09/changes#AddRange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AddInverseFunctionalObjectProperty">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="InverseFunctionalObjectPropertyChange"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveAsymmetricObjectProperty">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="AsymmetricObjectPropertyChange"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="IndividualDataPropertyChange">
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2009/09/changes#IndividualChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="EquivalentDataPropertyChange">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="DataPropertyChange"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DataPropertyRangeChange">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DataPropertyChange"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveDifferentIndividual">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="DifferentIndividualChange"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DisjointObjectPropertyChange">
+    <rdfs:subClassOf rdf:resource="#ObjectPropertyChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SubDataPropertyOfChange">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DataPropertyChange"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="AddInverseObjectProperty">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InverseObjectPropertyChange"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ReflexiveObjectPropertyChange">
+    <rdfs:subClassOf rdf:resource="#ObjectPropertyChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SameIndividualChange">
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2009/09/changes#IndividualChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveEquivalentObjectProperty">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="EquivalentObjectPropertyChange"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DisjointDataPropertyChange">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DataPropertyChange"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveDisjointDataProperty">
+    <rdfs:subClassOf rdf:resource="#DisjointDataPropertyChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AddSameIndividual">
+    <rdfs:subClassOf rdf:resource="#SameIndividualChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AddDataProperty">
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2009/09/changes#AddProperty"/>
+  </owl:Class>
+  <owl:Class rdf:ID="IndividualObjectPropertyChange">
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2009/09/changes#IndividualChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AddEquivalentObjectProperty">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EquivalentObjectPropertyChange"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="AddDisjointClass">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="DisjointClassChange"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#DisjointClassChange">
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2009/09/changes#ClassChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveDataProperty">
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2009/09/changes#RemoveProperty"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveIrreflexiveObjectProperty">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="IrreflexiveObjectPropertyChange"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#AsymmetricObjectPropertyChange">
+    <rdfs:subClassOf rdf:resource="#ObjectPropertyChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="DisjointUnionChange">
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2009/09/changes#ClassChange"/>
+  </owl:Class>
+  <owl:Class rdf:about="#SymmetricObjectPropertyChange">
+    <rdfs:subClassOf rdf:resource="#ObjectPropertyChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SubObjectPropertyOfChange">
+    <rdfs:subClassOf rdf:resource="#ObjectPropertyChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveReflexiveObjectProperty">
+    <rdfs:subClassOf rdf:resource="#ReflexiveObjectPropertyChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AddIndividualObjectProperty">
+    <rdfs:subClassOf rdf:resource="#IndividualObjectPropertyChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AddObjectProperty">
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2009/09/changes#AddProperty"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveFunctionalDataProperty">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="FunctionalDataPropertyChange"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveSubDataPropertyOf">
+    <rdfs:subClassOf rdf:resource="#SubDataPropertyOfChange"/>
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2009/09/changes#RemoveSubPropertyOf"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AddObjectPropertyDomain">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ObjectPropertyDomainChange"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2009/09/changes#AddDomain"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AddDatatype">
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2009/09/changes#OntologyChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveDataPropertyDomain">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="DataPropertyDomainChange"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2009/09/changes#RemoveDomain"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AddIndividualDataProperty">
+    <rdfs:subClassOf rdf:resource="#IndividualDataPropertyChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveFunctionalObjectProperty">
+    <rdfs:subClassOf rdf:resource="#FunctionalObjectPropertyChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AddTransitiveObjectProperty">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="TransitiveObjectPropertyChange"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveObjectProperty">
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2009/09/changes#RemoveProperty"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AddIrreflexiveObjectProperty">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#IrreflexiveObjectPropertyChange"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveEquivalentDataProperty">
+    <rdfs:subClassOf rdf:resource="#EquivalentDataPropertyChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveDisjointUnion">
+    <rdfs:subClassOf rdf:resource="#DisjointUnionChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AddDataPropertyRange">
+    <rdfs:subClassOf rdf:resource="#DataPropertyRangeChange"/>
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2009/09/changes#AddRange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveIndividualDataProperty">
+    <rdfs:subClassOf rdf:resource="#IndividualDataPropertyChange"/>
+  </owl:Class>
+  <owl:Class rdf:about="#ObjectPropertyDomainChange">
+    <rdfs:subClassOf rdf:resource="#ObjectPropertyChange"/>
+  </owl:Class>
+  <owl:Class rdf:about="#TransitiveObjectPropertyChange">
+    <rdfs:subClassOf rdf:resource="#ObjectPropertyChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveObjectPropertyDomain">
+    <rdfs:subClassOf rdf:resource="#ObjectPropertyDomainChange"/>
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2009/09/changes#RemoveDomain"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveIndividualObjectProperty">
+    <rdfs:subClassOf rdf:resource="#IndividualObjectPropertyChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AddDifferentIndividual">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DifferentIndividualChange"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveEquivalentClass">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="EquivalentClassChange"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="AddDataPropertyDomain">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DataPropertyDomainChange"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2009/09/changes#AddDomain"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveTransitiveObjectProperty">
+    <rdfs:subClassOf rdf:resource="#TransitiveObjectPropertyChange"/>
+  </owl:Class>
+  <owl:Class rdf:about="#EquivalentClassChange">
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2009/09/changes#ClassChange"/>
+  </owl:Class>
+  <owl:Class rdf:about="#DifferentIndividualChange">
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2009/09/changes#IndividualChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AddDisjointObjectProperty">
+    <rdfs:subClassOf rdf:resource="#DisjointObjectPropertyChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveDisjointObjectProperty">
+    <rdfs:subClassOf rdf:resource="#DisjointObjectPropertyChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AddDisjointUnion">
+    <rdfs:subClassOf rdf:resource="#DisjointUnionChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AddDisjointDataProperty">
+    <rdfs:subClassOf rdf:resource="#DisjointDataPropertyChange"/>
+  </owl:Class>
+  <owl:Class rdf:about="#IrreflexiveObjectPropertyChange">
+    <rdfs:subClassOf rdf:resource="#ObjectPropertyChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AddAsymmetricObjectProperty">
+    <rdfs:subClassOf rdf:resource="#AsymmetricObjectPropertyChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveSameIndividual">
+    <rdfs:subClassOf rdf:resource="#SameIndividualChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveDatatype">
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2009/09/changes#OntologyChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AddFunctionalDataProperty">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#FunctionalDataPropertyChange"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#InverseObjectPropertyChange">
+    <rdfs:subClassOf rdf:resource="#ObjectPropertyChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AddEquivalentDataProperty">
+    <rdfs:subClassOf rdf:resource="#EquivalentDataPropertyChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AddReflexiveObjectProperty">
+    <rdfs:subClassOf rdf:resource="#ReflexiveObjectPropertyChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveObjectPropertyRange">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ObjectPropertyRangeChange"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2009/09/changes#RemoveRange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveSubObjectPropertyOf">
+    <rdfs:subClassOf rdf:resource="#SubObjectPropertyOfChange"/>
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2009/09/changes#RemoveSubPropertyOf"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveInverseFunctionalObjectProperty">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InverseFunctionalObjectPropertyChange"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="AddEquivalentClass">
+    <rdfs:subClassOf rdf:resource="#EquivalentClassChange"/>
+  </owl:Class>
+  <owl:Class rdf:about="#ObjectPropertyRangeChange">
+    <rdfs:subClassOf rdf:resource="#ObjectPropertyChange"/>
+  </owl:Class>
+  <owl:Class rdf:about="#InverseFunctionalObjectPropertyChange">
+    <rdfs:subClassOf rdf:resource="#ObjectPropertyChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AddSubDataPropertyOf">
+    <rdfs:subClassOf rdf:resource="#SubDataPropertyOfChange"/>
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2009/09/changes#AddSubPropertyOf"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveSymmetricObjectProperty">
+    <rdfs:subClassOf rdf:resource="#SymmetricObjectPropertyChange"/>
+  </owl:Class>
+  <owl:Class rdf:about="#EquivalentObjectPropertyChange">
+    <rdfs:subClassOf rdf:resource="#ObjectPropertyChange"/>
+  </owl:Class>
+  <owl:Class rdf:about="#FunctionalDataPropertyChange">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DataPropertyChange"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#DataPropertyDomainChange">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DataPropertyChange"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveDataPropertyRange">
+    <rdfs:subClassOf rdf:resource="#DataPropertyRangeChange"/>
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2009/09/changes#RemoveRange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveDisjointClass">
+    <rdfs:subClassOf rdf:resource="#DisjointClassChange"/>
+  </owl:Class>
+  <owl:Class rdf:about="#DataPropertyChange">
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2009/09/changes#EntityChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AddFunctionalObjectProperty">
+    <rdfs:subClassOf rdf:resource="#FunctionalObjectPropertyChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AddSubObjectPropertyOf">
+    <rdfs:subClassOf rdf:resource="#SubObjectPropertyOfChange"/>
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2009/09/changes#AddSubPropertyOf"/>
+  </owl:Class>
+  <rdf:Description rdf:about="http://omv.ontoware.org/2009/09/changes#hasRelatedEntity">
+    <rdfs:range rdf:resource="http://owlodm.ontoware.org/OWL1.1#OWLEntity"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://omv.ontoware.org/2009/09/changes#appliedAxiom">
+    <rdfs:range rdf:resource="http://owlodm.ontoware.org/OWL1.1#Axiom"/>
+  </rdf:Description>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.3.1, Build 430)  http://protege.stanford.edu -->

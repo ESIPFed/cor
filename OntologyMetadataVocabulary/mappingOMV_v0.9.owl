@@ -1,0 +1,279 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns="http://omv.ontoware.org/2007/05/mappingomv#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:omv="http://omv.ontoware.org/2005/05/ontology#"
+  xml:base="http://omv.ontoware.org/2007/05/mappingomv">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://omv.ontoware.org/2005/05/ontology"/>
+  </owl:Ontology>
+  <owl:Class rdf:ID="Filter">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="filtersMethod"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:ID="MappingMethod"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#filtersMethod"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="CompoundMethod"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#CompoundMethod">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MappingMethod"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Evidence"/>
+  <owl:Class rdf:ID="Parameter"/>
+  <owl:Class rdf:ID="Parallel">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="aggregatesMethod"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#MappingMethod"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="composesMethod"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#MappingMethod"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#CompoundMethod"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Sequence">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#MappingMethod"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#composesMethod"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#CompoundMethod"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ManualMethod">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="BasicMethod"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Proof">
+    <rdfs:subClassOf rdf:resource="#Evidence"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Property">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#Evidence"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasEvidence"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:about="#MappingMethod">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://omv.ontoware.org/2005/05/ontology#Party"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasCreator"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasParameter"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#Parameter"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Mapping">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://omv.ontoware.org/2005/05/ontology#Party"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasCreator"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="usedMethod"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#usedMethod"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#MappingMethod"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasProperty"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#Property"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:about="#BasicMethod">
+    <rdfs:subClassOf rdf:resource="#MappingMethod"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Algorithm">
+    <rdfs:subClassOf rdf:resource="#BasicMethod"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Argument">
+    <rdfs:subClassOf rdf:resource="#Evidence"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Certificate">
+    <rdfs:subClassOf rdf:resource="#Evidence"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="#hasParameter">
+    <rdfs:domain rdf:resource="#MappingMethod"/>
+    <rdfs:range rdf:resource="#Parameter"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#usedMethod">
+    <rdfs:range rdf:resource="#MappingMethod"/>
+    <rdfs:domain rdf:resource="#Mapping"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasProperty">
+    <rdfs:range rdf:resource="#Property"/>
+    <rdfs:domain rdf:resource="#Mapping"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasSourceOntology">
+    <rdfs:domain rdf:resource="#Mapping"/>
+    <rdfs:range rdf:resource="http://omv.ontoware.org/2005/05/ontology#Ontology"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasTargetOntology">
+    <rdfs:domain rdf:resource="#Mapping"/>
+    <rdfs:range rdf:resource="http://omv.ontoware.org/2005/05/ontology#Ontology"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#composesMethod">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Sequence"/>
+          <owl:Class rdf:about="#Parallel"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="#MappingMethod"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#aggregatesMethod">
+    <rdfs:domain rdf:resource="#Parallel"/>
+    <rdfs:range rdf:resource="#MappingMethod"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasEvidence">
+    <rdfs:domain rdf:resource="#Property"/>
+    <rdfs:range rdf:resource="#Evidence"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#filtersMethod">
+    <rdfs:domain rdf:resource="#Filter"/>
+    <rdfs:range rdf:resource="#MappingMethod"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasCreator">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Mapping"/>
+          <owl:Class rdf:about="#MappingMethod"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="http://omv.ontoware.org/2005/05/ontology#Party"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="variety">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Filter"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="type">
+    <rdfs:domain rdf:resource="#Mapping"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="purpose">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Mapping"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="URI">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Mapping"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="processingTime">
+    <rdfs:domain rdf:resource="#Mapping"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="value">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#Filter"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="naturalLanguage">
+    <rdfs:domain rdf:resource="#Algorithm"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="level">
+    <rdfs:domain rdf:resource="#Mapping"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="ID">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Property"/>
+          <owl:Class rdf:about="#Parameter"/>
+          <owl:Class rdf:about="#MappingMethod"/>
+          <owl:Class rdf:about="#Evidence"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="source">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Algorithm"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="creationDate">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Mapping"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="version">
+    <rdfs:domain rdf:resource="#Algorithm"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.2.1, Build 365)  http://protege.stanford.edu -->

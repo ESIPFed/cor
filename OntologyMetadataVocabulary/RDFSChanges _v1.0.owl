@@ -1,0 +1,358 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns="http://omv.ontoware.org/2009/01/RDFSChanges#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:changes="http://omv.ontoware.org/2007/10/changes#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xml:base="http://omv.ontoware.org/2009/01/RDFSChanges">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://omv.ontoware.org/2007/10/changes"/>
+  </owl:Ontology>
+  <owl:Class rdf:ID="IsDefinedByChange">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="UtilityChange"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="AddAlt">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="AddContainer"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="FirstChange">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ListChange"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Node">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="RDFSResource"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveAlt">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="RemoveContainer"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="RDFStatement">
+    <rdfs:subClassOf rdf:resource="#RDFSResource"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="RDFObject"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="RDFPredicate"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="RDFSubject"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SeeAlsoChange">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#UtilityChange"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="RDFBag">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="RDFSContainer"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveDatatype">
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2007/10/changes#RemoveClass"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AddIndividualProperty">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="IndividualPropertyChange"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveFirst">
+    <rdfs:subClassOf rdf:resource="#FirstChange"/>
+  </owl:Class>
+  <owl:Class rdf:about="#RDFSContainer">
+    <rdfs:subClassOf rdf:resource="#RDFSResource"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveRest">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="RestChange"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#AddContainer">
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2007/10/changes#OntologyChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RDFSContainerMembershipProperty">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="RDFProperty"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TypedLiteral">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="RDFSLiteral"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="RDFSClass">
+    <rdfs:subClassOf rdf:resource="#RDFSResource"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveLiteral">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="RemoveNode"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#RemoveContainer">
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2007/10/changes#OntologyChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveIsDefinedBy">
+    <rdfs:subClassOf rdf:resource="#IsDefinedByChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RDFList">
+    <rdfs:subClassOf rdf:resource="#RDFSResource"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveSeq">
+    <rdfs:subClassOf rdf:resource="#RemoveContainer"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AddLiteral">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="AddNode"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="AddBlankNode">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#AddNode"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="URIReferenceNode">
+    <rdfs:subClassOf rdf:resource="#Node"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveIndividualProperty">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#IndividualPropertyChange"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="RDFSeq">
+    <rdfs:subClassOf rdf:resource="#RDFSContainer"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveContainerMembershipProperty">
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2007/10/changes#RemoveProperty"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AddContainerMembershipProperty">
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2007/10/changes#AddProperty"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AddBag">
+    <rdfs:subClassOf rdf:resource="#AddContainer"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AddPlainLiteral">
+    <rdfs:subClassOf rdf:resource="#AddLiteral"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveBlankNode">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#RemoveNode"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="AddIsDefinedBy">
+    <rdfs:subClassOf rdf:resource="#IsDefinedByChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AddList">
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2007/10/changes#OntologyChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RDFXMLLiteral">
+    <rdfs:subClassOf rdf:resource="#TypedLiteral"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveTypedLiteral">
+    <rdfs:subClassOf rdf:resource="#RemoveLiteral"/>
+  </owl:Class>
+  <owl:Class rdf:about="#RDFProperty">
+    <rdfs:subClassOf rdf:resource="#RDFSResource"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AddSeq">
+    <rdfs:subClassOf rdf:resource="#AddContainer"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RemovePlainLiteral">
+    <rdfs:subClassOf rdf:resource="#RemoveLiteral"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PlainLiteral">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#RDFSLiteral"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveXMLLiteral">
+    <rdfs:subClassOf rdf:resource="#RemoveTypedLiteral"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveSeeAlso">
+    <rdfs:subClassOf rdf:resource="#SeeAlsoChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveMemberOf">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="MemberOfChange"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="RDFTriple">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="ObjectForTriple"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="PredicateForTriple"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="SubjectForTriple"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="ReificationForTriple"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#MemberOfChange">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ContainerChange"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveList">
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2007/10/changes#OntologyChange"/>
+  </owl:Class>
+  <owl:Class rdf:about="#IndividualPropertyChange">
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2007/10/changes#IndividualChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AddTypedLiteral">
+    <rdfs:subClassOf rdf:resource="#AddLiteral"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AddRest">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#RestChange"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="AddSeeAlso">
+    <rdfs:subClassOf rdf:resource="#SeeAlsoChange"/>
+  </owl:Class>
+  <owl:Class rdf:about="#RemoveNode">
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2007/10/changes#OntologyChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AddXMLLiteral">
+    <rdfs:subClassOf rdf:resource="#AddTypedLiteral"/>
+  </owl:Class>
+  <owl:Class rdf:about="#RestChange">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ListChange"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="NamedGraph">
+    <rdfs:subClassOf rdf:resource="#RDFSResource"/>
+  </owl:Class>
+  <owl:Class rdf:about="#ContainerChange">
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2007/10/changes#EntityChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AddFirst">
+    <rdfs:subClassOf rdf:resource="#FirstChange"/>
+  </owl:Class>
+  <owl:Class rdf:about="#AddNode">
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2007/10/changes#OntologyChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AddMemberOf">
+    <rdfs:subClassOf rdf:resource="#MemberOfChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveURIReferenceNode">
+    <rdfs:subClassOf rdf:resource="#RemoveNode"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AddURIReferenceNode">
+    <rdfs:subClassOf rdf:resource="#AddNode"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AddDatatype">
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2007/10/changes#AddClass"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RDFAlt">
+    <rdfs:subClassOf rdf:resource="#RDFSContainer"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RDFSDatatype">
+    <rdfs:subClassOf rdf:resource="#RDFSClass"/>
+  </owl:Class>
+  <owl:Class rdf:ID="BlankNode">
+    <rdfs:subClassOf rdf:resource="#Node"/>
+  </owl:Class>
+  <owl:Class rdf:about="#ListChange">
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2007/10/changes#EntityChange"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RemoveBag">
+    <rdfs:subClassOf rdf:resource="#RemoveContainer"/>
+  </owl:Class>
+  <owl:Class rdf:about="#RDFSLiteral">
+    <rdfs:subClassOf rdf:resource="#Node"/>
+  </owl:Class>
+  <owl:Class rdf:about="#UtilityChange">
+    <rdfs:subClassOf rdf:resource="http://omv.ontoware.org/2007/10/changes#EntityChange"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="#PredicateForTriple">
+    <rdfs:range rdf:resource="#RDFProperty"/>
+    <rdfs:domain rdf:resource="#RDFTriple"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#ReificationForTriple">
+    <rdfs:domain rdf:resource="#RDFTriple"/>
+    <rdfs:range rdf:resource="#RDFStatement"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#RDFObject">
+    <rdfs:range rdf:resource="#RDFSResource"/>
+    <rdfs:domain rdf:resource="#RDFStatement"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#RDFPredicate">
+    <rdfs:domain rdf:resource="#RDFStatement"/>
+    <rdfs:range rdf:resource="#RDFProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#SubjectForTriple">
+    <rdfs:range rdf:resource="#Node"/>
+    <rdfs:domain rdf:resource="#RDFTriple"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#ObjectForTriple">
+    <rdfs:range rdf:resource="#Node"/>
+    <rdfs:domain rdf:resource="#RDFTriple"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#RDFSubject">
+    <rdfs:domain rdf:resource="#RDFStatement"/>
+    <rdfs:range rdf:resource="#RDFSResource"/>
+  </owl:ObjectProperty>
+  <rdf:Description rdf:about="http://omv.ontoware.org/2007/10/changes#hasRelatedEntity">
+    <rdfs:range rdf:resource="#RDFSResource"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://omv.ontoware.org/2007/10/changes#appliedAxiom">
+    <rdfs:range rdf:resource="#RDFTriple"/>
+  </rdf:Description>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.3.1, Build 430)  http://protege.stanford.edu -->

@@ -1,0 +1,205 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns="http://omv.ontoware.org/2007/07/lexomv#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:omv="http://omv.ontoware.org/2005/05/ontology#"
+  xml:base="http://omv.ontoware.org/2007/07/lexomv">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://omv.ontoware.org/2005/05/ontology"/>
+  </owl:Ontology>
+  <owl:Class rdf:ID="OntologyElement"/>
+  <owl:Class rdf:ID="LinguisticData">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasLinguisticElement"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasOntologyElement"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="isExpressedIn"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="NaturalLanguage"/>
+  <owl:Class rdf:ID="LinguisticElement"/>
+  <owl:ObjectProperty rdf:about="#isExpressedIn">
+    <rdfs:range rdf:resource="#NaturalLanguage"/>
+    <rdfs:domain rdf:resource="#LinguisticData"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasLinguisticElement">
+    <rdfs:domain rdf:resource="#LinguisticData"/>
+    <rdfs:range rdf:resource="#LinguisticElement"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasAssociated">
+    <rdfs:range rdf:resource="#LinguisticData"/>
+    <rdfs:domain rdf:resource="http://omv.ontoware.org/2005/05/ontology#Ontology"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasContributor">
+    <rdfs:range rdf:resource="http://omv.ontoware.org/2005/05/ontology#Party"/>
+    <rdfs:domain rdf:resource="#LinguisticData"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasOntologyElement">
+    <rdfs:domain rdf:resource="#LinguisticData"/>
+    <rdfs:range rdf:resource="#OntologyElement"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasCreator">
+    <rdfs:domain rdf:resource="#LinguisticData"/>
+    <rdfs:range rdf:resource="http://omv.ontoware.org/2005/05/ontology#Party"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="name">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#OntologyElement"/>
+          <owl:Class rdf:about="#NaturalLanguage"/>
+          <owl:Class rdf:about="#LinguisticElement"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="ID">
+    <rdfs:domain rdf:resource="#LinguisticData"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="description">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#NaturalLanguage"/>
+          <owl:Class rdf:about="#LinguisticElement"/>
+          <owl:Class rdf:about="#OntologyElement"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="ISOcode">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#NaturalLanguage"/>
+  </owl:DatatypeProperty>
+  <LinguisticElement rdf:ID="Note">
+    <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Note</name>
+    <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Additional information</description>
+  </LinguisticElement>
+  <LinguisticData rdf:ID="multi3">
+    <hasLinguisticElement>
+      <LinguisticElement rdf:ID="Lexicalization">
+        <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >The name by which the element is know (label)</description>
+        <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Lexicalization</name>
+      </LinguisticElement>
+    </hasLinguisticElement>
+    <isExpressedIn>
+      <NaturalLanguage rdf:ID="English">
+        <ISOcode rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >en</ISOcode>
+        <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >English</name>
+        <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >The description of english</description>
+      </NaturalLanguage>
+    </isExpressedIn>
+    <hasOntologyElement>
+      <OntologyElement rdf:ID="Property">
+        <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Are the slots</description>
+        <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Property</name>
+      </OntologyElement>
+    </hasOntologyElement>
+    <ID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >3</ID>
+  </LinguisticData>
+  <LinguisticElement rdf:ID="Description">
+    <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Description</name>
+    <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >More description</description>
+  </LinguisticElement>
+  <LinguisticData rdf:ID="multi1">
+    <hasLinguisticElement rdf:resource="#Lexicalization"/>
+    <hasOntologyElement>
+      <OntologyElement rdf:ID="Class">
+        <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Class</name>
+        <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >A class is a group or related entities</description>
+      </OntologyElement>
+    </hasOntologyElement>
+    <ID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >1</ID>
+    <isExpressedIn rdf:resource="#English"/>
+  </LinguisticData>
+  <omv:Ontology rdf:ID="FAOMultiLingualOntology"/>
+  <NaturalLanguage rdf:ID="Spanish">
+    <ISOcode rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >es</ISOcode>
+    <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Spanish</name>
+    <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Una descripcion del español</description>
+  </NaturalLanguage>
+  <LinguisticData rdf:ID="multi2">
+    <hasLinguisticElement>
+      <LinguisticElement rdf:ID="Context">
+        <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Context</name>
+        <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >The context description</description>
+      </LinguisticElement>
+    </hasLinguisticElement>
+    <hasOntologyElement rdf:resource="#Class"/>
+    <isExpressedIn>
+      <NaturalLanguage rdf:ID="German">
+        <ISOcode rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >de</ISOcode>
+        <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >kaputt</description>
+        <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >German</name>
+      </NaturalLanguage>
+    </isExpressedIn>
+    <ID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >2</ID>
+  </LinguisticData>
+  <LinguisticData rdf:ID="multi4">
+    <isExpressedIn rdf:resource="#Spanish"/>
+    <ID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >4</ID>
+    <hasLinguisticElement rdf:resource="#Note"/>
+    <hasOntologyElement>
+      <OntologyElement rdf:ID="Individual">
+        <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Is an instance of the class</description>
+        <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Individual</name>
+      </OntologyElement>
+    </hasOntologyElement>
+  </LinguisticData>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.2.1, Build 365)  http://protege.stanford.edu -->

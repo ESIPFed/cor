@@ -1,0 +1,185 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:owlodm="http://owlodm.ontoware.org/OWL1.1#"
+    xmlns="http://omv.ontoware.org/2007/07/workflow#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:changes="http://omv.ontoware.org/2007/10/changes#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:owlchanges="http://omv.ontoware.org/2007/07/OWLChanges#"
+    xmlns:omv="http://omv.ontoware.org/2005/05/ontology#"
+  xml:base="http://omv.ontoware.org/2007/07/workflow">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://omv.ontoware.org/2007/07/OWLChanges"/>
+  </owl:Ontology>
+  <owl:Class rdf:ID="Action">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="performedBy"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Insert">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="EntityAction"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="OntologyAction">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="relatedOntology"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Action"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SendToBeApproved">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EntityAction"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="MoveToDraft">
+    <rdfs:subClassOf rdf:resource="#OntologyAction"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RejectToDraft">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EntityAction"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Role"/>
+  <owl:Class rdf:ID="SendToApproved">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EntityAction"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SendToBeDeleted">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EntityAction"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Delete">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EntityAction"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="State"/>
+  <owl:Class rdf:ID="RejectToApproved">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EntityAction"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="EntityState">
+    <rdfs:subClassOf rdf:resource="#State"/>
+  </owl:Class>
+  <owl:Class rdf:ID="MoveToBeApproved">
+    <rdfs:subClassOf rdf:resource="#OntologyAction"/>
+  </owl:Class>
+  <owl:Class rdf:ID="OntologyState">
+    <rdfs:subClassOf rdf:resource="#State"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RejectToBeApproved">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EntityAction"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Publish">
+    <rdfs:subClassOf rdf:resource="#OntologyAction"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="fromPublicVersion"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="toPublicVersion"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Update">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EntityAction"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Approval">
+    <rdfs:subClassOf rdf:resource="#OntologyAction"/>
+  </owl:Class>
+  <owl:Class rdf:about="#EntityAction">
+    <rdfs:subClassOf rdf:resource="#Action"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="relatedChange"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="hasEntityState">
+    <rdfs:range rdf:resource="#EntityState"/>
+    <rdfs:domain rdf:resource="http://omv.ontoware.org/2007/10/changes#EntityChange"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#toPublicVersion">
+    <rdfs:domain rdf:resource="#Publish"/>
+    <rdfs:range rdf:resource="http://omv.ontoware.org/2005/05/ontology#Ontology"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasOntologyState">
+    <rdfs:range rdf:resource="#OntologyState"/>
+    <rdfs:domain rdf:resource="http://omv.ontoware.org/2005/05/ontology#Ontology"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasRole">
+    <rdfs:range rdf:resource="#Role"/>
+    <rdfs:domain rdf:resource="http://omv.ontoware.org/2005/05/ontology#Person"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#fromPublicVersion">
+    <rdfs:domain rdf:resource="#Publish"/>
+    <rdfs:range rdf:resource="http://omv.ontoware.org/2005/05/ontology#Ontology"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#performedBy">
+    <rdfs:range rdf:resource="http://omv.ontoware.org/2005/05/ontology#Person"/>
+    <rdfs:domain rdf:resource="#Action"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#relatedChange">
+    <rdfs:range rdf:resource="http://omv.ontoware.org/2007/10/changes#EntityChange"/>
+    <rdfs:domain rdf:resource="#EntityAction"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#relatedOntology">
+    <rdfs:range rdf:resource="http://omv.ontoware.org/2005/05/ontology#Ontology"/>
+    <rdfs:domain rdf:resource="#OntologyAction"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="timestamp">
+    <rdfs:domain rdf:resource="#Action"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <EntityState rdf:ID="Approved"/>
+  <OntologyState rdf:ID="DraftOntology"/>
+  <OntologyState rdf:ID="ApprovedOntology"/>
+  <OntologyState rdf:ID="PublishedOntology"/>
+  <Role rdf:ID="Validator"/>
+  <Role rdf:ID="Viewer"/>
+  <EntityState rdf:ID="Draft"/>
+  <OntologyState rdf:ID="ToBeApprovedOntology"/>
+  <Role rdf:ID="SubjectExpert"/>
+  <EntityState rdf:ID="ToBeApproved"/>
+  <EntityState rdf:ID="ToBeDeleted"/>
+  <EntityState rdf:ID="Deleted"/>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.3.1, Build 430)  http://protege.stanford.edu -->

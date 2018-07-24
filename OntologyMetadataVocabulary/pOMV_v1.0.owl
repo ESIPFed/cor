@@ -1,0 +1,177 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:mappingomv="http://omv.ontoware.org/2007/05/mappingomv#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns="http://omv.ontoware.org/2007/05/pomv#"
+    xmlns:omv="http://omv.ontoware.org/2005/05/ontology#"
+  xml:base="http://omv.ontoware.org/2007/05/pomv">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://omv.ontoware.org/2007/05/mappingomv"/>
+    <owl:imports rdf:resource="http://omv.ontoware.org/2005/05/ontology"/>
+  </owl:Ontology>
+  <owl:Class rdf:ID="Peer">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="peerType"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://omv.ontoware.org/2007/05/mappingomv#Mapping"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="provideMapping"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://omv.ontoware.org/2005/05/ontology#Ontology"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="trackOntology"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasExpertise"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="http://omv.ontoware.org/2005/05/ontology#OntologyDomain"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="acquaintedWith"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#Peer"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://omv.ontoware.org/2005/05/ontology#Ontology"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="provideOntology"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="mappingOMVLocation"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#Peer"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="IPAddress"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="ontologyOMVLocation"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#Peer"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="localPeer"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="GUID"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="contextOntology"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="http://omv.ontoware.org/2005/05/ontology#Ontology"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#contextOntology"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="#hasExpertise">
+    <rdfs:range rdf:resource="http://omv.ontoware.org/2005/05/ontology#OntologyDomain"/>
+    <rdfs:domain rdf:resource="#Peer"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#provideMapping">
+    <rdfs:domain rdf:resource="#Peer"/>
+    <rdfs:range rdf:resource="http://omv.ontoware.org/2007/05/mappingomv#Mapping"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#acquaintedWith">
+    <rdfs:domain rdf:resource="#Peer"/>
+    <rdfs:range rdf:resource="#Peer"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#ontologyOMVLocation">
+    <rdfs:domain rdf:resource="http://omv.ontoware.org/2005/05/ontology#Ontology"/>
+    <rdfs:range rdf:resource="#Peer"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#provideOntology">
+    <rdfs:domain rdf:resource="#Peer"/>
+    <rdfs:range rdf:resource="http://omv.ontoware.org/2005/05/ontology#Ontology"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#mappingOMVLocation">
+    <rdfs:range rdf:resource="#Peer"/>
+    <rdfs:domain rdf:resource="http://omv.ontoware.org/2007/05/mappingomv#Mapping"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#contextOntology">
+    <rdfs:domain rdf:resource="#Peer"/>
+    <rdfs:range rdf:resource="http://omv.ontoware.org/2005/05/ontology#Ontology"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#trackOntology">
+    <rdfs:range rdf:resource="http://omv.ontoware.org/2005/05/ontology#Ontology"/>
+    <rdfs:domain rdf:resource="#Peer"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="#peerType">
+    <rdfs:domain rdf:resource="#Peer"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="#GUID">
+    <rdfs:domain rdf:resource="#Peer"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="#localPeer">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="#Peer"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="#IPAddress">
+    <rdfs:domain rdf:resource="#Peer"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.3.1, Build 430)  http://protege.stanford.edu -->
