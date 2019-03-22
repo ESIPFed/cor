@@ -913,3 +913,11 @@ All above as expected. Now, the cronjob:
 
 
 **Done.**
+
+
+# 2019-03-21
+
+Initial login promopted upgrade of various packages... this was initiated by Lewis McGibbney and completed successfully. 
+
+## Issue with dispatch of sweetontology.net/
+There is an issue serving the **RewriteRule    /(.+) http://cor.esipfed.org/ont/api/v0/ont?iri=http://sweetontology.net/$1 [P,QSA,NE,L]** where any resource requested via sweetontology.net/some/resource is not being correctly serviced by COR at http://cor.esipfed.org/ont/api/v0/ont?iri=http://sweetontology.net/some/resource.
