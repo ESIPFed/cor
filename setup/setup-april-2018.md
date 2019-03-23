@@ -921,3 +921,31 @@ Initial login promopted upgrade of various packages... this was initiated by Lew
 
 ## Issue with dispatch of sweetontology.net/
 There is an issue serving the **RewriteRule    /(.+) http://cor.esipfed.org/ont/api/v0/ont?iri=http://sweetontology.net/$1 [P,QSA,NE,L]** where any resource requested via sweetontology.net/some/resource is not being correctly serviced by COR at http://cor.esipfed.org/ont/api/v0/ont?iri=http://sweetontology.net/some/resource.
+
+# 2019-03-23
+
+(9am PT)
+
+`rw-rw-r-- 1 temp temp 1127 Feb 20  2018 /etc/httpd/conf.d/sweetontology.conf`
+
+
+```
+$ sudo tail -f /var/log/httpd/error_log
+...
+[Fri Mar 22 03:26:59.605499 2019] [proxy:error] [pid 13496] (111)Connection refused: AH00957: HTTP: attempt to connect to 127.0.0.1:9090 (localhost) failed
+[Fri Mar 22 03:26:59.605530 2019] [proxy_http:error] [pid 13496] [client 104.175.85.226:56585] AH01114: HTTP: failed to make connection to backend: localhost, referer: http://cor.esipfed.org/
+```
+
+But I'm unable to trigger any error here while trying to reload http://sweetontology.net/realmCryo/FastIce
+
+```
+$ docker ps
+CONTAINER ID        IMAGE                    COMMAND                  CREATED             STATUS              PORTS                      NAMES
+4f0f87f3f4ab        mmisw/orr:3.8.3          "catalina.sh run"        7 weeks ago         Up 37 hours         0.0.0.0:9090->8080/tcp     orr
+e29978cb25dc        franzinc/agraph:v6.1.1   "/bin/sh -c '/app/ag…"   7 weeks ago         Up 37 hours         0.0.0.0:10035->10035/tcp   agraph
+79c22265d64b        mongo:3.4.2              "docker-entrypoint.s…"   7 weeks ago         Up 37 hours         0.0.0.0:27017->27017/tcp   mongo
+```
+
+In particular, the port setup `0.0.0.0:9090->8080/tcp` for the orr looks as expected.
+
+So, along with the apache conf, this all should be working ....
