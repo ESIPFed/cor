@@ -18,6 +18,8 @@ mongo database, crontab from previous instance.
 
     sudo usermod -a -G docker cor-admin1
 
+(Also installed [`ctop`](https://github.com/bcicen/ctop#install).)
+
 ## COR
 
 - transferred files and mongo database
