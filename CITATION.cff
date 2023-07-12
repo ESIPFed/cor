@@ -6,7 +6,7 @@ url: 'http://cor.esipfed.org'
 authors:
       - family-names: Graybeal
         given-names: John
-        orcid:   #[John add your ORCID here]
+        orcid: https://orcid.org/0000-0001-6875-5360
         affiliation: " Stanford ?"  #[John, add your preferred affiliation here]
         #affiliation:    #[can also add a ROR for your affiliation if you like]
 
