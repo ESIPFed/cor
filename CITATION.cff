@@ -1,0 +1,24 @@
+ff-version: 1.2.0
+message: "Please cite COR using the following"
+title: "ESIP Community Ontology Repository (COR)"
+type: software
+url: 'http://cor.esipfed.org'
+authors:
+      - family-names: Graybeal
+        given-names: John
+        orcid: https://orcid.org/0000-0001-6875-5360
+        affiliation: " Stanford ?"  #[John, add your preferred affiliation here]
+        #affiliation:    #[can also add a ROR for your affiliation if you like]
+
+      - family-names: Rueda-Velásquez
+        given-names: Carlos A.
+        orcid: https://orcid.org/0000-0002-5440-0638
+        affiliation: MBARI
+          
+      - family-names: McGibbney
+        given-names: "Lewis John"
+        affiliation: "NASA Jet Propulsion Laboratory"
+        orcid: "https://orcid.org/0000-0003-2185-928X"
+license:       #[I do not find license information anywhere]  
+version: 3.9.83
+date-released: '2021-12-07'
