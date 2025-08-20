@@ -7,31 +7,39 @@ One path to restart COR services is simply to restart the COR AMI. The COR servi
 
 ## Option 2: Relaunch COR services
 
-To simply relaunch the COR services, the recommended approach is to use docker-compose.
+To simply relaunch the COR services, the recommended approach is to use docker-compose. 
+(At some point docker should be upgraded, then it's `docker compose`.)
 
 ### Setup
 
 The user should be logged in as cor-admin1 and change to the COR directory. Then they should execute the variables setup script.
+(Note for improvement: use a docker .env file for the environment variables.)
 ```
 [cor-admin1@ip-172-31-44-124 ~]$ cd COR
-[cor-admin1@ip-172-31-44-124 COR]$ bash setenv.sh
+[cor-admin1@ip-172-31-44-124 COR]$ source setenv.sh
+```
 
 ## Bringing COR down
+To stop COR operations:
+
+```
 [cor-admin1@ip-172-31-44-124 COR]$ docker-compose down
 ```
 
 ### Starting COR up
 
-To bring the system back up, use docker-compose up.
+To bring the system back up, use `docker-compose up -d`.
 
 ```
-[cor-admin1@ip-172-31-44-124 COR]$ docker-compose up -t
+[cor-admin1@ip-172-31-44-124 COR]$ docker-compose up -d
 ```
 
 ## Option 3: Relaunch specific service
 
 You can relaunch a specific service, or any combination, with docker. The dependency order should be followed to ensure services are ready for their clients. 
 Your directory doesn't matter for this operation. [Note: I'm not 100% confident this approach will work under all conditions. jbg]
+
+(These instructions will change with new docker, to  `docker compose stop <service>`)
 
 ### Stopping services
 
@@ -57,14 +65,15 @@ orr
 
 # Recovering files
 
-The directory /home/cor-admin1/COR is under version control using git (only local, no remote). So, recovering setenv.sh would be a matter of just using git.
+The directory /home/cor-admin1/COR is under version control using git (only local, no remote). 
+So, recovering a file like setenv.sh would be a matter of just using git (see examples).
 
 To recover a particular file, run
 ```
-git checkout -- <filename>
+git checkout -- setenv.sh 
 ```
 
-To see differences in a file (like setenv sh in this example):
+To see differences in a file that's been edited (like setenv.sh in this example):
 ```
 $ git diff setenv.sh
 diff --git a/setenv.sh b/setenv.sh
