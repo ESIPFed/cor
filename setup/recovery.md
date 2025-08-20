@@ -55,3 +55,34 @@ mongo
 orr
 ```
 
+# Recovering files
+
+The directory /home/cor-admin1/COR is under version control using git (only local, no remote). So, recovering setenv.sh would be a matter of just using git.
+
+To recover a particular file, run
+```
+git checkout -- <filename>
+```
+
+To see differences in a file (like setenv sh in this example):
+```
+$ git diff setenv.sh
+diff --git a/setenv.sh b/setenv.sh
+index 5e1c758..e54b2fc 100644
+--- a/setenv.sh
++++ b/setenv.sh
+@@ -1,4 +1,5 @@
+ # Define these environment variables prior to running your ORR instance.
++# Reconstructed JBG 20250819 (from COR_TEST directory) after accidentally overwriting
+
+ # Configuration directory on the host
+ export HOST_CONFIG_DIR=$PWD/config
+@@ -9,7 +10,7 @@ export ORR_HOST_DATA=$PWD/orr_data
+ # Host port for the ORR service.
+ # Make sure it is an unused port on your host.
+ export ORR_HOST_PORT=9090
+-
++#
+ # Host Mongo data directory
+ export MONGO_HOST_DATA=$PWD/mongo_data
+```
